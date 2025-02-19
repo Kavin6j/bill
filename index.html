@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snackathon Billing System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #E6F0FF;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #1E3A8A;
+    }
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px 0;
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+    .menu-item input {
+      width: 50px;
+      text-align: center;
+    }
+    .total {
+      font-size: 1.2em;
+      font-weight: bold;
+      text-align: right;
+      margin-top: 20px;
+    }
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #1E3A8A;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1D4ED8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Snackathon Billing System</h1>
+    <div id="menu">
+      <div class="menu-item">
+        <span>Pani Puri - Rs 40</span>
+        <input type="number" min="0" id="pani-puri" placeholder="Qty">
+      </div>
+      <div class="menu-item">
+        <span>Rose Milk - Rs 40</span>
+        <input type="number" min="0" id="rose-milk" placeholder="Qty">
+      </div>
+      <div class="menu-item">
+        <span>Badam Milk - Rs 40</span>
+        <input type="number" min="0" id="badam-milk" placeholder="Qty">
+      </div>
+      <div class="menu-item">
+        <span>Kuzhi Paniyaram - Rs 40</span>
+        <input type="number" min="0" id="kuzhi-paniyaram" placeholder="Qty">
+      </div>
+      <div class="menu-item">
+        <span>Paal Sarbath - Rs 50</span>
+        <input type="number" min="0" id="paal-sarbath" placeholder="Qty">
+      </div>
+      <div class="menu-item">
+        <span>Halwa - Rs 40</span>
+        <input type="number" min="0" id="halwa" placeholder="Qty">
+      </div>
+      <div class="menu-item">
+        <span>Milk Pudding - Rs 30</span>
+        <input type="number" min="0" id="milk-pudding" placeholder="Qty">
+      </div>
+      <div class="menu-item">
+        <span>Thattu Vadai Set - Rs 40</span>
+        <input type="number" min="0" id="thattu-vadai" placeholder="Qty">
+      </div>
+    </div>
+    <div class="total">
+      Total: Rs <span id="total-amount">0</span>
+    </div>
+    <button onclick="generateBill()">Generate Bill</button>
+  </div>
+
+  <script>
+    const prices = {
+      "pani-puri": 40,
+      "rose-milk": 40,
+      "badam-milk": 40,
+      "kuzhi-paniyaram": 40,
+      "paal-sarbath": 50,
+      "halwa": 40,
+      "milk-pudding": 30,
+      "thattu-vadai": 40
+    };
+
+    function calculateTotal() {
+      let total = 0;
+      for (const item in prices) {
+        const qty = parseInt(document.getElementById(item).value) || 0;
+        total += qty * prices[item];
+      }
+      document.getElementById("total-amount").textContent = total;
+    }
+
+    function generateBill() {
+      const bill = {};
+      let total = 0;
+      for (const item in prices) {
+        const qty = parseInt(document.getElementById(item).value) || 0;
+        if (qty > 0) {
+          bill[item] = { qty, price: prices[item], total: qty * prices[item] };
+          total += qty * prices[item];
+        }
+      }
+      bill.totalAmount = total;
+
+      // Send bill to backend (you'll need to implement this)
+      console.log(bill);
+      alert("Bill generated! Check console for details.");
+    }
+
+    // Attach event listeners to inputs
+    document.querySelectorAll("#menu input").forEach(input => {
+      input.addEventListener("input", calculateTotal);
+    });
+  </script>
+</body>
+</html>

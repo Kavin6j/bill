@@ -1,0 +1,111 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #E6F0FF; /* Light blue background */
+    color: #333; /* Dark gray text */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  /* Container for the billing system */
+  .container {
+    max-width: 800px;
+    width: 100%;
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff; /* White background */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  /* Header */
+  h1 {
+    text-align: center;
+    color: #1E3A8A; /* Dark blue */
+    margin-bottom: 20px;
+    font-size: 2em;
+  }
+  
+  /* Menu Items */
+  .menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+    padding: 10px;
+    border-bottom: 1px solid #ddd; /* Light gray border */
+  }
+  
+  .menu-item span {
+    font-size: 1.1em;
+    color: #1E3A8A; /* Dark blue */
+  }
+  
+  .menu-item input {
+    width: 60px;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+  }
+  
+  .menu-item input:focus {
+    outline: none;
+    border-color: #1E3A8A; /* Dark blue */
+  }
+  
+  /* Total Section */
+  .total {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: right;
+    margin-top: 20px;
+    color: #1E3A8A; /* Dark blue */
+  }
+  
+  /* Generate Bill Button */
+  button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #1E3A8A; /* Dark blue */
+    color: #fff; /* White text */
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  button:hover {
+    background-color: #1D4ED8; /* Lighter blue on hover */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .container {
+      padding: 15px;
+    }
+  
+    h1 {
+      font-size: 1.5em;
+    }
+  
+    .menu-item span {
+      font-size: 1em;
+    }
+  
+    .menu-item input {
+      width: 50px;
+    font-size: 0.9em;
+    }
+  
+    button {
+      font-size: 1em;
+    }
+  }
