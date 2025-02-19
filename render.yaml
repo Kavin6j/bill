@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: snackathon-backend
+    runtime: node
+    buildCommand: npm install
+    startCommand: node server.js
+    env: node
+    envVars:
+      - key: PORT
+        value: 10000
+    branch: main
